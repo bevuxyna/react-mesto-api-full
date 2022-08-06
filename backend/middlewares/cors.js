@@ -18,9 +18,6 @@ const cors = (req, res, next) => {
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header('Access-Control-Allow-Origin', origin);
-
-    // устанавливаем заголовок, который разрешает браузеру запросы из любого источника
-    res.header('Access-Control-Allow-Origin', '*');
   }
 
   if (method === 'OPTIONS') {
