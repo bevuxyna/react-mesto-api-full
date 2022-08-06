@@ -23,6 +23,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger); // подключаем логгер запросов
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.post('/signin', validateLogin, login);
 app.post('/signup', validateCreateUser, createUser);
 
