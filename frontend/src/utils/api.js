@@ -16,7 +16,10 @@ export class Api {
     //Загрузка информации о пользователе с сервера
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
-            headers: this._headers
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+            }
         })
             .then(this._checkServerResponse);
     }
@@ -25,7 +28,10 @@ export class Api {
     updateAvatar(data) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+            },
             body: JSON.stringify({
                 avatar: data.avatar
             })
@@ -37,7 +43,10 @@ export class Api {
     updateUserInfo(data) {
         return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+            },
             body: JSON.stringify({
                 name: data.name,
                 about: data.about
@@ -58,7 +67,10 @@ export class Api {
     sendCard(data) {
         return fetch(`${this._url}/cards`, {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+            },
             body: JSON.stringify({
                 name: data.name,
                 link: data.link
@@ -71,7 +83,10 @@ export class Api {
     deleteCard(cardID) {
         return fetch(`${this._url}/cards/${cardID}`, {
             method: 'DELETE',
-            headers: this._headers
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+            }
         })
             .then(this._checkServerResponse);
     }
@@ -80,7 +95,10 @@ export class Api {
     setLike(cardID) {
         return fetch(`${this._url}/cards/${cardID}/likes`, {
             method: 'PUT',
-            headers: this._headers
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+            }
         })
             .then(this._checkServerResponse);
     }
@@ -89,7 +107,10 @@ export class Api {
     deleteLike(cardID) {
         return fetch(`${this._url}/cards/${cardID}/likes`, {
             method: 'DELETE',
-            headers: this._headers
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+            }
         })
             .then(this._checkServerResponse);
     }
@@ -104,11 +125,7 @@ export class Api {
 }
 
 const api = new Api({
-    url: 'https://mesto.nomoreparties.co/v1/cohort-40/',
-    headers: {
-        authorization: '051d708c-058c-4034-9252-0a36ac6463d7',
-        'Content-Type': 'application/json',
-    },
+    url: 'https://api.bevuxyna.students.nomoredomains.sbs'
 });
 
 export default api;
