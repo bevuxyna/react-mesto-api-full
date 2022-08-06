@@ -30,6 +30,7 @@
           <option value="http://primefaces.org/ui" />
           <option value="http://tiles.apache.org/" />
           <option value="http://bevuxyna.students.nomoredomains.sbs" />
+          <option value="http://api.bevuxyna.students.nomoredomains.sbs" />
         </list>
       </option>
     </inspection_tool>

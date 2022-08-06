@@ -2,6 +2,8 @@
 const allowedCors = [
   'https://bevuxyna.students.nomoredomains.sbs',
   'http://bevuxyna.students.nomoredomains.sbs',
+  'https://api.bevuxyna.students.nomoredomains.sbs',
+  'http://api.bevuxyna.students.nomoredomains.sbs',
   'http://localhost:3000',
 ];
 
