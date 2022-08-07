@@ -58,7 +58,10 @@ export class Api {
     //Загрузка карточек с сервера
     getInitialCards() {
         return fetch(`${this._url}/cards`, {
-            headers: this._headers
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            },
         })
             .then(this._checkServerResponse);
     }
