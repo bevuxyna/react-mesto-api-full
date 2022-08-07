@@ -7,7 +7,7 @@ const { CREATED } = require('../utils/status');
 // возвращает все карточки
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 
