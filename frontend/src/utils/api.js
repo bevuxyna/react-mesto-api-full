@@ -15,6 +15,7 @@ export class Api {
     //Загрузка информации о пользователе с сервера
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt')
