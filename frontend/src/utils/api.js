@@ -18,7 +18,7 @@ export class Api {
         return fetch(`${this._url}/users/me`, {
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('jwt')}`
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
             }
         })
             .then(this._checkServerResponse);
@@ -30,7 +30,7 @@ export class Api {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('jwt')}`
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
             },
             body: JSON.stringify({
                 avatar: data.avatar
@@ -45,7 +45,7 @@ export class Api {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('jwt')}`
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
             },
             body: JSON.stringify({
                 name: data.name,
@@ -69,7 +69,7 @@ export class Api {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('jwt')}`
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
             },
             body: JSON.stringify({
                 name: data.name,
@@ -85,7 +85,7 @@ export class Api {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('jwt')}`
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
             }
         })
             .then(this._checkServerResponse);
@@ -97,7 +97,7 @@ export class Api {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('jwt')}`
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
             }
         })
             .then(this._checkServerResponse);
@@ -109,7 +109,7 @@ export class Api {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('jwt')}`
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
             }
         })
             .then(this._checkServerResponse);
