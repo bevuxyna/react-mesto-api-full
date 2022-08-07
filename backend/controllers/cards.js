@@ -52,11 +52,12 @@ module.exports.deleteCard = (req, res, next) => {
 
 module.exports.likeCard = (req, res, next) => {
   const { cardId } = req.params;
+  const userId = req.user._id;
   Card.findByIdAndUpdate(
     cardId,
     // оператор $addToSet для добавления элемента в массив, если его там ещё нет
     // добавить _id в массив, если его там нет
-    { $addToSet: { likes: req.user._id } },
+    { $addToSet: { likes: userId } },
     { new: true },
   )
     .then((card) => {
@@ -76,11 +77,13 @@ module.exports.likeCard = (req, res, next) => {
 
 module.exports.deleteLikeCard = (req, res, next) => {
   const { cardId } = req.params;
+  const userId = req.user._id;
+
   Card.findByIdAndUpdate(
     cardId,
     // оператор $pull для удаления элемента из массива
     // убрать _id из массива
-    { $pull: { likes: req.user._id } },
+    { $pull: { likes: userId } },
     { new: true },
   )
     .then((card) => {
