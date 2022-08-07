@@ -1,7 +1,6 @@
 export class Api {
     constructor(options) {
         this._url = options.url;
-        this._headers = options.headers;
     }
 
     _checkServerResponse(res) {
@@ -61,7 +60,7 @@ export class Api {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt')
-            },
+            }
         })
             .then(this._checkServerResponse);
     }
