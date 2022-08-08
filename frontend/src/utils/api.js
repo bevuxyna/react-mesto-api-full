@@ -58,6 +58,7 @@ export class Api {
     //Загрузка карточек с сервера
     getInitialCards() {
         return fetch(`${this._url}/cards`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt')
