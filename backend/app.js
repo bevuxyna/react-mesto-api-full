@@ -2,12 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
-const userRouter = require('./routes/users');
-const cardRouter = require('./routes/cards');
-const { login, createUser } = require('./controllers/users');
-const auth = require('./middlewares/auth');
-const { validateLogin, validateCreateUser } = require('./middlewares/validator');
-const NotFoundError = require('./errors/not-found-error');
+const routes = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors = require('./middlewares/cors');
 const errorHandler = require('./middlewares/errors');
@@ -33,15 +28,7 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.post('/signin', validateLogin, login);
-app.post('/signup', validateCreateUser, createUser);
-
-app.use('/users', auth, userRouter);
-app.use('/cards', auth, cardRouter);
-
-app.use((req, res, next) => {
-  next(new NotFoundError('Запрашиваемый ресурс не найден'));
-});
+app.use(routes);
 
 app.use(errorLogger); // подключаем логгер ошибок
 
