@@ -17,7 +17,7 @@ module.exports.getUsers = (req, res, next) => {
 
 module.exports.getUser = (req, res, next) => {
   User.findById(req.user._id)
-    .then((user) => res.status(200).send(user))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
@@ -27,7 +27,7 @@ module.exports.getUserById = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Нет пользователя с таким id');
       }
-      res.status(200).send(user);
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -84,7 +84,7 @@ module.exports.login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '7d' },
       );
-      res.status(200).send({ token });
+      res.send({ token });
     })
     .catch(next);
 };
@@ -102,7 +102,7 @@ module.exports.updateUser = (req, res, next) => {
     },
   )
     .then((data) => {
-      res.status(200).send(data);
+      res.send(data);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -126,7 +126,7 @@ module.exports.updateAvatar = (req, res, next) => {
     },
   )
     .then((data) => {
-      res.status(200).send(data);
+      res.send(data);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
